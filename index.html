@@ -6,10 +6,16 @@
   <title>Gustav Klimt Virtual Museum</title>
   <style>
     body {
-      background-color: #fefcfb;
+      background: linear-gradient(to bottom right, #fefcfb, #e4dad1);
       font-family: 'Helvetica Neue', sans-serif;
       margin: 0;
       padding: 0;
+      animation: fadeInPage 1.2s ease-in;
+    }
+
+    @keyframes fadeInPage {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
 
     nav {
@@ -66,7 +72,7 @@
     }
 
     .art-card:hover {
-      transform: scale(1.03);
+      transform: rotateZ(1deg) scale(1.03);
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
     }
 
@@ -94,12 +100,10 @@
     }
 
     @keyframes fadeIn {
-      to {
-        opacity: 1;
-      }
+      to { opacity: 1; }
     }
 
-    /* Lightbox style */
+    /* Lightbox */
     .lightbox {
       position: fixed;
       top: 0; left: 0;
@@ -139,12 +143,25 @@
       margin-top: 10px;
     }
 
+    /* Scroll to Top */
+    #topBtn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #5d3e3e;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 99;
+    }
+
     @media (max-width: 600px) {
       nav {
         flex-direction: column;
         align-items: flex-start;
       }
-
       .nav-links {
         flex-direction: column;
         gap: 10px;
@@ -167,7 +184,6 @@
 
   <section class="gallery" id="museum"></section>
 
-  <!-- Lightbox -->
   <div class="lightbox" id="lightbox">
     <div class="lightbox-content">
       <img id="lightbox-img" src="" alt="">
@@ -176,12 +192,13 @@
     </div>
   </div>
 
+  <button onclick="scrollToTop()" id="topBtn">⬆️</button>
+
   <script>
     fetch("https://api.sheetbest.com/sheets/3e154b07-a90b-499a-8774-683768901f9b")
       .then(response => response.json())
       .then(data => {
         const container = document.getElementById("museum");
-
         data.forEach(item => {
           const card = document.createElement("div");
           card.className = "art-card";
@@ -191,22 +208,22 @@
               <h3>${item.name}</h3>
               <p>${item.description}</p>
               <p><small>${item.date}</small></p>
-            </div>
-          `;
-
-          // Tıklama ile Lightbox açma
+            </div>`;
           card.addEventListener("click", () => {
             document.getElementById("lightbox-img").src = item.image_url;
             document.getElementById("lightbox-desc").textContent = item.description;
             document.getElementById("lightbox").style.display = "flex";
           });
-
           container.appendChild(card);
         });
       });
 
     function closeLightbox() {
       document.getElementById("lightbox").style.display = "none";
+    }
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   </script>
 </body>
