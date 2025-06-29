@@ -2,15 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About – Klimt Museum</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About – Klimt Virtual Museum</title>
   <style>
     body {
       font-family: 'Helvetica Neue', sans-serif;
-      background-color: #fefcfb;
+      background: linear-gradient(to bottom right, #fefcfb, #e4dad1);
       margin: 0;
       padding: 0;
       color: #333;
+      animation: fadeInPage 1.2s ease-in;
+    }
+
+    @keyframes fadeInPage {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
 
     header {
@@ -29,25 +35,33 @@
       max-width: 800px;
       margin: 40px auto;
       padding: 0 20px;
+      line-height: 1.6;
     }
 
     a {
       color: #5d3e3e;
-      text-decoration: none;
+      text-decoration: underline;
     }
 
     a:hover {
-      text-decoration: underline;
+      opacity: 0.8;
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>About This Virtual Museum</h1>
+    <h1>About This Project</h1>
   </header>
+
   <main>
-    <p>This website is a digital humanities project presenting a curated selection of Gustav Klimt’s works using open-access data. It was created as part of a course assignment and is powered by data from a public Google Sheet.</p>
-    <p>The goal is to provide a minimalist, accessible view of Klimt’s iconic paintings, demonstrating how data, design, and art can interact in a digital space.</p>
+    <p>This digital museum was created as part of a Digital Humanities course project. The goal was to explore how digital tools can be used to organize and present cultural artifacts in engaging and accessible ways.</p>
+
+    <p>The focus of this virtual exhibition is the work of <strong>Gustav Klimt</strong>, one of the most iconic artists of the early 20th century. The collection brings together ten of his most well-known paintings, offering brief descriptions, historical context, and visual details.</p>
+
+    <p>The data for this site is hosted in a collaborative <a href="https://docs.google.com/">Google Sheet</a> and fetched using a live JSON API. The design emphasizes clarity and simplicity, while small visual enhancements such as animations and zoom effects aim to make the user experience more engaging.</p>
+
+    <p>This project reflects the intersection of art, history, and digital design — inviting users to explore the legacy of Klimt in a modern format.</p>
+
     <p><a href="index.html">← Back to Museum</a></p>
   </main>
 </body>
