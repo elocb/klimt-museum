@@ -105,7 +105,9 @@
       transition: transform 0.3s ease;
     }
 
-    /* RESIM BÜYÜMESİ IPTAL EDİLDİ — SADECE KART BÜYÜYOR */
+    .art-card:hover img {
+      transform: scale(1.05);
+    }
 
     .art-card .info {
       padding: 16px;
@@ -127,6 +129,7 @@
       to { opacity: 1; }
     }
 
+    /* Lightbox */
     .lightbox {
       position: fixed;
       top: 0; left: 0;
@@ -166,6 +169,7 @@
       margin-top: 10px;
     }
 
+    /* Scroll to Top */
     #topBtn {
       position: fixed;
       bottom: 20px;
